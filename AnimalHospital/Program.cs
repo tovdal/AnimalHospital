@@ -47,7 +47,7 @@
                 .ToList();
 
             //e
-            bool isAnimalNamedShadow = animals.Find(a => a.Name == "Shadow");
+            bool isAnimalNamedShadow = animals.Any(a => a.Name == "Shadow");
 
             if (isAnimalNamedShadow)
             {
