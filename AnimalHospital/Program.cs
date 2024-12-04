@@ -22,10 +22,41 @@
             };
 
             // a
-            int numberOfDogs = animals.Count(dogs => dogs.Type == "Dog");
+            int numberOfDogs = animals
+                .Count(dogs => dogs.Type == "Dog");
+
             Console.WriteLine($"Amount of dogs: {numberOfDogs}");
 
+            // b
+            Animal oldestAnimal = animals
+                .OrderByDescending(a => a.Age).First();
 
+            Console.WriteLine($"Oldest animal in the animal hospital: {oldestAnimal.Name}," +
+                $" Type: {oldestAnimal.Type}, and Age: {oldestAnimal.Age}");
+            
+            //c
+            var vaccinatedAnimals = animals
+                .Where(animals => animals.IsVaccinated)
+                .ToList();
+
+            Console.WriteLine("All vaccinated animals");
+
+            //d
+            var animalsWithFourLegsAndOverThreeYearsOld = animals
+                .Where(a => a.Legs == 4 && a.Age > 3 )
+                .ToList();
+
+            //e
+            bool isAnimalNamedShadow = animals.Find(a => a.Name == "Shadow");
+
+            if (isAnimalNamedShadow)
+            {
+                Console.WriteLine("Yes! There is a animal named Shadow.");
+            }
+            else
+            {
+                Console.WriteLine("There is no animal named shadow");
+            }
         }
     }
 }
