@@ -6,7 +6,7 @@
         {
             Console.WriteLine("Hello, World!");
 
-            var animals = new List<Animal>
+            var listOfAnimals = new List<Animal>
             {
                 new Animal {Name = "Conny", Type = "Dog", Legs = 4, Age = 3, IsVaccinated = true},
                 new Animal {Name = "Fido", Type = "Dog", Legs = 4, Age = 5, IsVaccinated = true},
@@ -22,32 +22,34 @@
             };
 
             // a
-            int numberOfDogs = animals
+            var numberOfDogs = listOfAnimals
                 .Count(dogs => dogs.Type == "Dog");
 
             Console.WriteLine($"Amount of dogs: {numberOfDogs}");
 
             // b
-            Animal oldestAnimal = animals
-                .OrderByDescending(a => a.Age).First();
+            var oldestAnimal = listOfAnimals
+                .OrderByDescending(a => a.Age)
+                .First();
 
             Console.WriteLine($"Oldest animal in the animal hospital: {oldestAnimal.Name}," +
-                $" Type: {oldestAnimal.Type}, and Age: {oldestAnimal.Age}");
+                $"  Age: {oldestAnimal.Age} and Type: {oldestAnimal.Type}");
             
             //c
-            var vaccinatedAnimals = animals
+            var vaccinatedAnimals = listOfAnimals
                 .Where(animals => animals.IsVaccinated)
                 .ToList();
 
             Console.WriteLine("All vaccinated animals");
 
+
             //d
-            var animalsWithFourLegsAndOverThreeYearsOld = animals
+            var animalsWithFourLegsAndOverThreeYearsOld = listOfAnimals
                 .Where(a => a.Legs == 4 && a.Age > 3 )
                 .ToList();
 
             //e
-            bool isAnimalNamedShadow = animals.Any(a => a.Name == "Shadow");
+            var isAnimalNamedShadow = listOfAnimals.Any(a => a.Name == "Shadow");
 
             if (isAnimalNamedShadow)
             {
